@@ -35,9 +35,8 @@ jobs:
         run: terraform plan -no-color -input=false
 
       - name: Generate summary
-        env:
-          PLAN: "${{ steps.plan.outputs.stdout }}"
         run: |
+          plan_output="${{ steps.plan.outputs.stdout }}"
           summary="\n
           #### Terraform Format and Style 🖌 \`${{ steps.fmt.outcome }}\`\n\n
 
@@ -49,7 +48,7 @@ jobs:
           <details>\n
           <summary>Show Plan</summary>\n
           \`\`\`\n
-          ${PLAN}\n
+          ${plan_output}\n
           \`\`\`\n
           </details>
           "
