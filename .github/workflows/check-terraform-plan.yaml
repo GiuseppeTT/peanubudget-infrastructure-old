@@ -36,19 +36,20 @@ jobs:
 
       - name: Generate summary
         run: |
-          echo "#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`" >> $GITHUB_STEP_SUMMARY
+          summary="\n
+          #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`\n\n
 
-          echo "#### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`" >> $GITHUB_STEP_SUMMARY
+          #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`\n\n
 
-          echo "#### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`" >> $GITHUB_STEP_SUMMARY
+          #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`\n\n
 
-          echo "#### Terraform Plan 📖\`${{ steps.plan.outcome }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "<details>" >> $GITHUB_STEP_SUMMARY
-          echo "<summary>Show Plan</summary>" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`\n" >> $GITHUB_STEP_SUMMARY
-          echo "${{ steps.plan.outputs.stdout }}" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "</details>" >> $GITHUB_STEP_SUMMARY
+          #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`\n
+          <details>\n
+          <summary>Show Plan</summary>\n
+          \`\`\`\n
+          ${{ steps.plan.outputs.stdout }}\n
+          \`\`\`\n
+          </details>
+          "
+
+          echo -e ${summary} >> $GITHUB_STEP_SUMMARY
