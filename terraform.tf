@@ -13,12 +13,12 @@ terraform {
     }
   }
 
-  # cloud {
-  #   organization = "giutt-org"
-  #   workspaces {
-  #     name = "peanubudget-workspace"
-  #   }
-  # }
+  cloud {
+    organization = "giutt-org"
+    workspaces {
+      name = "peanubudget-workspace"
+    }
+  }
 }
 
 provider "azurerm" {
