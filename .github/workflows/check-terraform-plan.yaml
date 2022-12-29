@@ -37,17 +37,17 @@ jobs:
       - name: Generate summary
         run: |
           summary="\n
-          #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`\n\n
+          #### Terraform Format and Style 🖌 \`${{ steps.fmt.outcome }}\`\n\n
 
-          #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`\n\n
+          #### Terraform Initialization ⚙️ \`${{ steps.init.outcome }}\`\n\n
 
-          #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`\n\n
+          #### Terraform Validation 🤖 \`${{ steps.validate.outcome }}\`\n\n
 
-          #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`\n
+          #### Terraform Plan 📖 \`${{ steps.plan.outcome }}\`\n
           <details>\n
           <summary>Show Plan</summary>\n
           \`\`\`\n
-          ${{ steps.plan.outputs.stdout }}\n
+          ${{ echo -e steps.plan.outputs.stdout }}\n
           \`\`\`\n
           </details>
           "
